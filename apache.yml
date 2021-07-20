@@ -2,15 +2,8 @@
 - hosts: webservers 
   become: True
   tasks:
-    - name: Install packages
-      apt:
-        name: Install Apache
-        apt: name=apache2 update_cache=yes state=latest
-    - name: Start Apache server
-      service:
-        name: httpd
-        state: started
-        enabled: True
+    - name: install apache2
+      apt: name=apache2 update_cache=yes state=latest
     - name: Deploy static website
       copy:
         src: index.html
